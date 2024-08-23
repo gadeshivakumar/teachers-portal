@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+   
+    <title>Add Student</title>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <section class="wrapper">
+                <div class="heading">
+                    <h1 class="text text-large">Add student</h1>
+                    <p class="text text-normal">Go back <span><a href="{{ url_for('index') }}" class="text text-links">portal</a></span>
+                    </p>
+                </div>
+    <form method="post" class="form" action="{{ url_for('add_student') }}">
+        <div class="input-control">
+        <label for="name" hidden>Name:</label><br>
+        <input type="text" id="name" name="name" class="input-field" placeholder="Name" required><br>
+    </div>
+    <div class="input-control">
+        <label for="roll_number" hidden>Roll Number:</label><br>
+        <input type="text" id="roll_number" name="roll_number" class="input-field" placeholder="Roll Number"><br>
+    </div>
+    <div class="input-control">
+        <label for="department" hidden>Department:</label><br>
+        <input type="text" id="department" name="department" placeholder="Department" class="input-field" required><br>
+    </div>
+    <div class="input-control">
+        <label for="section" hidden>Section:</label><br>
+        <input type="text" id="section" name="section" placeholder="section" class="input-field" required><br>
+    </div>
+
+        <input type="submit" value="Submit" class="input-submit">
+    </form>
+</section>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/students_list.css')}}">
+    <title>Attendance</title>
+</head>
+<body>
+
+
+    <h1>Attendance</h1>
+    <main class="container">
+    <form method="post" action="{{ url_for('attend') }}">
+        <table class="responsive-table">
+            <thead class="table-header">
+                <tr>
+                    <th class="col col-1">Name</th>
+                    <th class="col col-1">Roll Number</th>
+                    <th class="col col-1">Department</th>
+                    <th class="col col-1">Section</th>
+                    <th class="col col-1">Present</th>
+                    <th class="col col-1">Absent</th>
+                </tr>
+            </thead>
+            <tbody class="table-row">
+                {% for student in students %}
+                <tr>
+                    <td class="col col-1">{{ student.name }}</td>
+                    <td class="col col-1">{{ student.roll_number }}</td>
+                    <td class="col col-1">{{ student.department }}</td>
+                    <td class="col col-1">{{ student.section }}</td>
+                    <td class="col col-1"><input type="checkbox" name="present_{{ student.id }}"></td>
+                    <td class="col col-1"><input type="checkbox" name="absent_{{ student.id }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" value="Submit Attendance">
+    </form>
+    </main>
+</body>
+</html>

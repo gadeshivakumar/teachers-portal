@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    
+    <h1>Welcome to Attendance System</h1>
+    <a href="{{ url_for('add_student') }}">Add Student</a>
+
+    <h2>Students:</h2>
+    <ul>
+    {% for student in students %}
+        <li>{{ student.name }} - {{ student.roll_number }} - {{ student.department }} - {{ student.section }} <a href="{{ url_for('delete_student', id=student.id) }}">Delete</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Welcome to Attendance System</h1>
+    <a href="{{ url_for('attend') }}">Attendence</a>
+
+    <h1>Attendance System</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Department</th>
+                <th>Section</th>
+                <th>Present Days</th>
+                <th>Absent Days</th>
+                <th>Attendance Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.roll_number }}</td>
+                <td>{{ student.department }}</td>
+                <td>{{ student.section }}</td>
+                <td>{{ present_absent_counts[student.id]['present'] }}</td>
+                <td>{{ present_absent_counts[student.id]['absent'] }}</td>
+                <td>{{ '%.2f' % present_absent_counts[student.id]['attendance_percentage'] }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1>marks</h1>
+    <a href="{{ url_for('marks') }}">marks</a>
+
+</body>
+</html>

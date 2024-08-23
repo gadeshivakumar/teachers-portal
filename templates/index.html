@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Portal</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/portal.css') }}">
+   
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-brand">
+            <h1> 
+                Teacher Portal
+            </h1>
+        </div>
+        <div class="navbar-links">
+            <p>
+                Academic Year: 
+                <span id="academicYear">2024</span>
+            </p>
+            <!-- Add other relevant information -->
+        </div>
+
+        <button onclick="location.href='{{url_for('land')}}'">logout</button>
+    </div>
+
+    <div class="container">
+        <div id="formSection">
+            <h2>Mark Attendance</h2>
+            <button id="addStudentButton" 
+                onclick="location.href='{{url_for('add_student')}}'">
+                Add Student
+            </button>
+            
+            <button id="addStudentButton" 
+            onclick="location.href='{{url_for('attend')}}'">
+            Attendence
+        </button>
+        
+        <button id="addStudentButton" 
+        onclick="location.href='{{url_for('sl')}}'">
+       students List
+    </button>
+    
+    <button id="addStudentButton" 
+    onclick="location.href='{{url_for('marks')}}'">
+    marks
+</button>
+
+           
+
+
+
+    <script src="{{url_for('static', filename='portal.js')}}"></script>
+</body>
+
+</html>

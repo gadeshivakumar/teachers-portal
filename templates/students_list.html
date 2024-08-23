@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/students_list.css')}}">
+    <title>Students List</title>
+</head>
+<body>
+    <main class="container">
+        <h2>Students List</h2>
+        <table class="responsive-table">
+            <thead class="table-header">
+                <tr>
+                    <th class="col col-1">NAME</th>
+                    <th class="col col-2">ROLL NO</th>
+                    <th class="col col-3">DEPARTMENT</th>
+                    <th class="col col-4">SECTION</th>
+                    <th class="col col-1">PRESENT DAYS</th>
+                    <th class="col col-2">ABSENT DAYS</th>
+                    <th class="col col-3">ATTENDENCE PERCENTAGE</th>
+                    <th class="col col-4">ACTION</th> <!-- Added column for action -->
+                </tr>
+            </thead>
+            <tbody class="table-row">
+                {% for student in students %}
+                <tr>
+                    <td class="col col-1">{{ student.name }}</td>
+                    <td class="col col-2">{{ student.roll_number }}</td>
+                    <td class="col col-3">{{ student.department }}</td>
+                    <td class="col col-4">{{ student.section }}</td>
+                    <td class="col col-1">{{ present_absent_counts[student.id]['present'] }}</td>
+                    <td class="col col-2">{{ present_absent_counts[student.id]['absent'] }}</td>
+                    <td class="col col-3">{{ '%.2f' % present_absent_counts[student.id]['attendance_percentage'] }}%</td>
+                    <td class="col col-4">
+                        <!-- <form method="post" action="{{ url_for('delete_student', id=student.id) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form> -->
+                        <form method="post" action="{{ url_for('delete_student', id=student.id) }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

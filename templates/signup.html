@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>Teacher Signup</title>
+</head>
+<body>
+    <main class="main">
+    
+    <section class="wrapper">
+        <div class="heading">
+            <h1 class="text text-large">Sign Up</h1>
+            <p class="text text-normal">Existing user? <span><a href="{{ url_for('login') }}" class="text text-links">Login</a></span>
+            </p>
+        </div>
+    <form method="post" class="form" action="{{ url_for('signup') }}">
+       
+            <div class="input-control">	
+            <label for="name" class="input-label" hidden>Name:</label><br>
+                   <input type="text" id="name" name="name" class="input-field" placeholder="Name"><br>
+           </div>
+            <div class="input-control">
+                   <label for="department" class="input-label" hidden>Department:</label><br>
+                   <input type="text" id="department" name="department" class="input-field" placeholder="Department" required><br>
+           </div>
+            <div class="input-control">
+                   <label for="subject" class="input-label" hidden>Subject:</label><br>
+                   <input type="text" id="subject" name="subject" class="input-field" placeholder="Subject"><br>
+           </div>
+            <div class="input-control">
+                   <label for="email" class="input-label" hidden>Email:</label><br>
+                   <input type="email" id="email" name="email" class="input-field" placeholder="Email Address"><br>
+           </div>
+            <div class="input-control">
+                   <label for="password" class="input-label" hidden>Password:</label><br>
+                   <input type="password" id="password" name="password" class="input-field" placeholder="Password" required><br>
+           </div>
+           <div class="input-control">
+                   <input type="submit" value="Submit" class="input-submit">
+           </div>
+             
+    </form>
+</section>
+</main>
+</body>
+</html>

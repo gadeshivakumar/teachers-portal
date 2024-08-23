@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+</head>
+<body>
+    <h1>Enter Marks</h1>
+    <form method="post" action="{{ url_for('marks') }}">
+        <label for="student_id">Student:</label>
+        <select name="student_id" id="student_id">
+            {% for student in students %}
+                <option value="{{ student.id }}">{{ student.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required><br>
+        <label for="marks">Marks:</label>
+        <input type="number" id="marks" name="marks" required><br>
+        <input type="submit" value="Submit Marks">
+    </form>
+</body>
+</html>
